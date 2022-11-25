@@ -66,6 +66,7 @@ const number = select('.number');
 const input = select('.input');
 const index = [];
 
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 
 onEvent('click', add, function () {
@@ -80,7 +81,8 @@ onEvent('click', add, function () {
 
         onEvent('click', newDiv, function () {
             
-            
+            print('hrllo');
+            newDiv.classList.remove('frame');
             
         });
     } else if (input.value === '') {
@@ -95,37 +97,47 @@ onEvent('click', add, function () {
 
 function listContact() {
     
+    
     // ------------------Splitting values-----------------------
-
-
+    
     let str = input.value;
     let spliting = str.split(',');
-    let contact = new Contact(spliting[0], spliting[1], spliting[2]);
-    index.push(contact);
+    
+    if (spliting.length === 3){
+        if (!emailRegex.test(spliting[2])){
+            info.innerText = 'Please Enter valid Email!'
+        } else{
+            
+            let contact = new Contact(spliting[0], spliting[1], spliting[2]);
+            index.push(contact);
+            // ------------------NewDiv-----------------------
+            
+            let newDiv = document.createElement("div");
+            
+            middle.appendChild(newDiv);
+            newDiv.classList.add('frame');
+            newDiv.style.backgroundColor = ' #757373';
+            
+            let userName = document.createElement("p");
+            newDiv.appendChild(userName);
+            userName.innerText = `Name:${contact.name}`;
+            
+            let userCity = document.createElement("p");
+            newDiv.appendChild(userCity);
+            userCity.innerText = `City:${contact.city}`;
+            
+            let userEmail = document.createElement("p");
+            newDiv.appendChild(userEmail);
+            userEmail.innerText = `Email:${contact.email}`;
+            
+            input.value = '';
 
-
-    // ------------------NewDiv-----------------------
-
-
-    let newDiv = document.createElement("div");
-
-    middle.appendChild(newDiv);
-    newDiv.classList.add('frame');
-    newDiv.style.backgroundColor = ' #757373';
-
-    let userName = document.createElement("p");
-    newDiv.appendChild(userName);
-    userName.innerText = `Name:${contact.name}`;
-
-    let userCity = document.createElement("p");
-    newDiv.appendChild(userCity);
-    userCity.innerText = `City:${contact.city}`;
-
-    let userEmail = document.createElement("p");
-    newDiv.appendChild(userEmail);
-    userEmail.innerText = `Email:${contact.email}`;
-
-
+        }
+        
+    } else {
+        info.innerText = 'Please Enter Full Details!';
+    }
+   
 }
 function savedContacts() {
     number.innerText = `Saved Contacts:${index.length}`

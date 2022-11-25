@@ -99,9 +99,11 @@ select {
 }
 .middle {
     color: #fff;
-    grid-template-columns: repeat(4, 150px);
+    /* grid-template-columns: repeat(4, 150px); */
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    gap: 1rem;
     display: grid;
-    gap: 5px;
+    /* gap: 5px; */
     padding: 10px;
     margin-top: 0px;
 }
@@ -124,6 +126,6 @@ select {
     color: #fff;
     font-size: 16px;
     inset: auto 50px 50px auto;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 26px 30px -10px, rgba(0, 0, 0, 0.1) 0px 16px 10px -10px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 26px 30px -10px;
     background-color: var(--app-orange);
 }

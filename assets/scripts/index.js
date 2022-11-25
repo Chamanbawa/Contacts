@@ -1,3 +1,5 @@
+'use strict';
+
 function onEvent(event, selector, callback) {
 
     return selector.addEventListener(event, callback);
@@ -71,16 +73,16 @@ function listContact() {
     // ------------------Splitting values-----------------------
     
     let str = input.value;
-    let spliting = str.split(',');
+
+    const trimming = str.split(',').map(element => element.trim());
     
-    if (spliting.length === 3){
-        if (!emailRegex.test(spliting[2])){
+    if (trimming.length === 3){
+        if (!emailRegex.test(trimming[2])){
             info.innerText = 'Please Enter valid Email!'
         } else{
             
-            let contact = new Contact(spliting[0], spliting[1], spliting[2]);
-            // index.push(newArr);
-         index.splice(contact,0);
+            let contact = new Contact(trimming[0], trimming[1], trimming[2]);
+            index.push(contact);
 
             // ------------------NewDiv-----------------------
             
@@ -104,15 +106,11 @@ function listContact() {
             
             input.value = '';
             
-            // let box = select('.frame');
-            
-            // for (const newDiv of box) {
-            //     newDiv.addEventListener('click', (el) => {
-            //       print('hrllo');
-            //       el.target.remove();
-            //       print('hrllo');
-            //     });
-            // }              
+
+onEvent('click',newDiv,function() {
+  newDiv.remove();
+
+    });             
         }
         
     } else {
@@ -134,6 +132,7 @@ onEvent('click', add, function () {
 
         listContact()
         savedContacts();
+        print('koosa');
 
     } else if (input.value === '') {
         info.innerText = 'Please Input Details';

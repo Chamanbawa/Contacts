@@ -1,0 +1,132 @@
+@import "./reset.css";
+
+/* ------------------- */
+/*                      */
+/* ------------------- */
+:root {
+
+    --app-dark-bg: #1a1d28;
+    --app-red: #ff3c57;
+    --app-green: #33ab4e;
+    --app-purple: #833cff;
+    --app-orange: #ff833c;
+    --app-blue: #3c57ff;
+    --app-blue-hover: #364ee6;
+}
+
+body {
+    background-color: #000;
+}
+
+.container {
+    width: min(100% - 30px, 1080px);
+    margin: auto;
+}
+
+.center {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.title {
+    color: #fff;
+}
+
+
+.upper {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+
+}
+
+
+
+
+form {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.input
+ {
+    appearance: none;
+    width: 75%;
+    padding: 5px;
+    height: 46px;
+    text-align: center;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    inset: auto 50px 50px auto;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 26px 30px -10px;
+    background-color: var(--app-dark-bg);
+}
+
+.create {
+    width: 120px;
+    padding: 5px;
+    height: 46px;
+    text-align: center;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 16px;
+    inset: auto 50px 50px auto;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 26px 30px -10px;
+    background-color: var(--app-orange);
+}
+
+select {
+    font-size: 10px;
+}
+
+.main-box {
+    background-color: var(--app-dark-bg);
+    min-height: 450px;
+    gap: 5px;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 10px;
+}
+
+.info {
+    color: #fff;
+   
+}
+.middle {
+    color: #fff;
+    grid-template-columns: repeat(5, 100px);
+    display: grid;
+    gap: 5px;
+    padding: 10px;
+    margin-top: 0px;
+}
+
+.square{
+    height: 100px;
+    width: 100px;
+    cursor: pointer;
+}
+.circle{
+    height: 100px;
+    cursor: pointer;
+    width: 100px;
+    border-radius: 50%;
+}
+
+.number{
+    position: fixed;
+    width: 150px;
+    height: 40px;
+    text-align: center;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 18px;
+    inset: auto 50px 50px auto;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 26px 30px -10px, rgba(0, 0, 0, 0.1) 0px 16px 10px -10px;
+    background-color: var(--app-orange);
+}

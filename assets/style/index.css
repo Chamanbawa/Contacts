@@ -38,13 +38,9 @@ body {
 
 .upper {
     display: flex;
-    width: 100%;
     gap: 10px;
 
 }
-
-
-
 
 form {
     width: 100%;
@@ -52,8 +48,7 @@ form {
     gap: 10px;
 }
 
-.input
- {
+.input {
     appearance: none;
     width: 75%;
     padding: 5px;
@@ -86,6 +81,7 @@ select {
 
 .main-box {
     background-color: var(--app-dark-bg);
+    min-width: 300px;
     min-height: 450px;
     gap: 5px;
     padding: 10px;
@@ -95,29 +91,26 @@ select {
 
 .info {
     color: #fff;
-   
+
 }
+
 .middle {
     color: #fff;
-    /* grid-template-columns: repeat(4, 150px); */
-    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 200px);
     gap: 1rem;
     display: grid;
-    /* gap: 5px; */
     padding: 10px;
     margin-top: 0px;
 }
 
-.frame{
+.frame {
     height: 100px;
     cursor: pointer;
     padding: 5px;
     font-size: 12px;
 }
 
-
-
-.number{
+.number {
     position: fixed;
     width: 150px;
     height: 40px;

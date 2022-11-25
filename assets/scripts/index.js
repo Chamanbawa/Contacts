@@ -52,12 +52,7 @@ class Contact {
 
 }
 
-
-
 // --------------------FrontEnd--------------------------
-
-
-
 
 const add = select('.create');
 const middle = select('.middle');
@@ -66,33 +61,8 @@ const number = select('.number');
 const input = select('.input');
 const index = [];
 
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const emailRegex = /^(?=^.{8,}$)[-_A-Za-z0-9]+([_.-][a-zA-Z0-9]+)*@[A-Za-z0-9]+([.-][a-zA-Z0-9]+)*\.[A-Za-z]{2,}$/;
 
-
-onEvent('click', add, function () {
-    event.preventDefault();
-
-
-    if (index.length < 15 && input.value !== '') {
-        info.innerText = "";
-
-        listContact()
-        savedContacts();
-
-        onEvent('click', newDiv, function () {
-            
-            print('hrllo');
-            newDiv.classList.remove('frame');
-            
-        });
-    } else if (input.value === '') {
-        info.innerText = 'Please Input Details';
-    } else if (index.length > 5){
-        info.innerText = 'Memory is Full!';
-    } else {
-        info.innerText = 'Invalid Input';
-    }
-});
 
 
 function listContact() {
@@ -109,7 +79,9 @@ function listContact() {
         } else{
             
             let contact = new Contact(spliting[0], spliting[1], spliting[2]);
-            index.push(contact);
+            // index.push(newArr);
+         index.splice(contact,0);
+
             // ------------------NewDiv-----------------------
             
             let newDiv = document.createElement("div");
@@ -131,14 +103,44 @@ function listContact() {
             userEmail.innerText = `Email:${contact.email}`;
             
             input.value = '';
-
+            
+            // let box = select('.frame');
+            
+            // for (const newDiv of box) {
+            //     newDiv.addEventListener('click', (el) => {
+            //       print('hrllo');
+            //       el.target.remove();
+            //       print('hrllo');
+            //     });
+            // }              
         }
         
     } else {
         info.innerText = 'Please Enter Full Details!';
     }
-   
+    
 }
 function savedContacts() {
     number.innerText = `Saved Contacts:${index.length}`
 }
+
+
+onEvent('click', add, function () {
+    event.preventDefault();
+
+
+    if (index.length < 15 && input.value !== '') {
+        info.innerText = "";
+
+        listContact()
+        savedContacts();
+
+    } else if (input.value === '') {
+        info.innerText = 'Please Input Details';
+    } else if (index.length > 5){
+        info.innerText = 'Memory is Full!';
+    } else {
+        info.innerText = 'Invalid Input';
+    }
+});
+
